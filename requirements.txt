@@ -1,5 +1,9 @@
 meson==1.7.2
 numpy==2.2.5
+pandas==2.2.3
 pycairo==1.28.0
 PyGObject==3.52.3
-wheel==0.45.1
+python-dateutil==2.9.0.post0
+pytz==2025.2
+six==1.17.0
+tzdata==2025.2
