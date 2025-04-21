@@ -252,7 +252,7 @@ plt.plot(z, phi_z)
 plt.axvline(0.0, color='k')
 plt.ylim(-0.1, 1.1)
 plt.xlabel('z')
-plt.ylabel('$\phi (z)$')
+plt.ylabel('$\\phi (z)$')
 
 # y axis ticks and gridline
 plt.yticks([0.0, 0.5, 1.0])
@@ -291,7 +291,7 @@ plt.plot(phi_z, c0, linestyle='--', label='J(w) if y=0')
 
 plt.ylim(0.0, 5.1)
 plt.xlim([0, 1])
-plt.xlabel('$\phi$(z)')
+plt.xlabel('$\\phi$(z)')
 plt.ylabel('J(w)')
 plt.legend(loc='best')
 plt.tight_layout()
