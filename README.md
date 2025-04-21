@@ -1,7 +1,10 @@
 ##　環境構築
-python -m venv <新しい仮想環境ディレクトリ名>
-source ./<新しい仮想環境ディレクトリ名>/bin/activate
-pip install -r ./requirements.txt
+
+`python -m venv <新しい仮想環境ディレクトリ名>`
+
+`source ./<新しい仮想環境ディレクトリ名>/bin/activate`
+
+`pip install -r ./requirements.txt`
 
 ## Python Machine Learning (3rd Ed.) Code Repository
 
