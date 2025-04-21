@@ -1,0 +1,5 @@
+meson==1.7.2
+numpy==2.2.5
+pycairo==1.28.0
+PyGObject==3.52.3
+wheel==0.45.1
