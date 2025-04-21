@@ -193,9 +193,9 @@ df.tail()
 # 
 
 
-
-df = pd.read_csv('iris.data', header=None, encoding='utf-8')
-df.tail()
+# オンラインでデータを取得する場合、これは必要ない。自身のリポジトリからデータを取得する場合は、パスを正しく設定し、これを利用する
+# df = pd.read_csv('iris.data', header=None, encoding='utf-8')
+# df.tail()
 
 
 
