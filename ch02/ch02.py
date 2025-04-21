@@ -157,6 +157,42 @@ v2 = 0.5 * v1
 np.arccos(v1.dot(v2) / (np.linalg.norm(v1) * np.linalg.norm(v2)))
 
 
+# パーセプトロンクラスを動かしてみる　0421 kanmachi
+
+# 教師データの例（2次元データ）：以下のような2次元のデータを扱う
+# X = np.array([[1, 1], [2, 1], [2, 3], [3, 5]])
+# y = np.array([1, 1, -1, -1])  # ラベル（1か-1）
+
+np.random.seed(42)  # 再現性のための乱数シード
+
+# クラス 1 のデータ（50個）
+X1 = np.random.normal(loc=[2, 2], scale=0.8, size=(50, 2))
+y1 = np.ones(50)
+
+# クラス -1 のデータ（50個）
+X2 = np.random.normal(loc=[7, 7], scale=0.8, size=(50, 2))
+y2 = -np.ones(50)
+
+# データを結合
+X = np.vstack((X1, X2))
+y = np.hstack((y1, y2))
+
+ppn = Perceptron(eta=0.01, n_iter=10)
+ppn.fit(X, y)
+
+# 学習結果を確認
+print("重み:", ppn.w_)
+print("各エポックでの誤分類数:", ppn.errors_)
+
+# 誤分類数の推移をプロット（任意）
+plt.rcParams['font.family'] = ['Hiragino Sans', 'Osaka', 'AppleGothic']
+
+plt.plot(range(1, len(ppn.errors_) + 1), ppn.errors_, marker='o')
+plt.xlabel('エポック')
+plt.ylabel('誤分類数')
+plt.title('パーセプトロンの学習過程')
+plt.grid()
+plt.show()
 
 # ## Training a perceptron model on the Iris dataset
 
