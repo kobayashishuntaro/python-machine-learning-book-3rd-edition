@@ -1,8 +1,8 @@
 ##　環境構築
 
-`python -m venv <新しい仮想環境ディレクトリ名>`
+`python -m venv venv`
 
-`source ./<新しい仮想環境ディレクトリ名>/bin/activate`
+`source ./venv/bin/activate`
 
 `pip install -r ./requirements.txt`
 
