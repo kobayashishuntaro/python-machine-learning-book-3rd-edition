@@ -1,4 +1,4 @@
-##　環境構築
+## 環境構築
 
 `python -m venv venv`
 
