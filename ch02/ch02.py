@@ -6,6 +6,10 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
+from matplotlib import rcParams
+
+# 日本語フォントの設定
+rcParams['font.family'] = 'Hiragino Sans'  # macOS標準フォントの例
 
 # Copyright (c) 2019 [Sebastian Raschka](sebastianraschka.com)
 # 
@@ -194,16 +198,11 @@ plt.title('パーセプトロンの学習過程')
 plt.grid()
 plt.show()
 
-# ## Training a perceptron model on the Iris dataset
+# ## 2-3 Training a perceptron model on the Iris dataset
 
 # ...
 
 # ### Reading-in the Iris data
-
-
-
-
-
 s = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 print('URL:', s)
 
@@ -237,15 +236,13 @@ df.tail()
 
 
 # ### Plotting the Iris data
-
-
-
-
 # select setosa and versicolor
+# 最初の100行を選択し、4列目の値を取得する。これは、Iris-setosaとIris-versicolorのみを含むデータセットである。
 y = df.iloc[0:100, 4].values
+# Iris-setosaを-1、Iris-versicolorを1に変換する
 y = np.where(y == 'Iris-setosa', -1, 1)
 
-# extract sepal length and petal length
+# 最初の100行を選択し、0列目と2列目の値を取得する。これは、がく片の長さと花びらの長さを含むデータセットである。
 X = df.iloc[0:100, [0, 2]].values
 
 # plot data
@@ -254,8 +251,8 @@ plt.scatter(X[:50, 0], X[:50, 1],
 plt.scatter(X[50:100, 0], X[50:100, 1],
             color='blue', marker='x', label='versicolor')
 
-plt.xlabel('sepal length [cm]')
-plt.ylabel('petal length [cm]')
+plt.xlabel('がく片の長さ [cm]')
+plt.ylabel('花びらの長さ [cm]')
 plt.legend(loc='upper left')
 
 # plt.savefig('images/02_06.png', dpi=300)
@@ -272,8 +269,8 @@ ppn = Perceptron(eta=0.1, n_iter=10)
 ppn.fit(X, y)
 
 plt.plot(range(1, len(ppn.errors_) + 1), ppn.errors_, marker='o')
-plt.xlabel('Epochs')
-plt.ylabel('Number of updates')
+plt.xlabel('エポック数')
+plt.ylabel('誤分類の個数')
 
 # plt.savefig('images/02_07.png', dpi=300)
 plt.show()
@@ -318,8 +315,8 @@ def plot_decision_regions(X, y, classifier, resolution=0.02):
 
 
 plot_decision_regions(X, y, classifier=ppn)
-plt.xlabel('sepal length [cm]')
-plt.ylabel('petal length [cm]')
+plt.xlabel('がく片の長さ [cm]')
+plt.ylabel('花びらの長さ [cm]')
 plt.legend(loc='upper left')
 
 
@@ -403,7 +400,7 @@ class AdalineGD(object):
             # in the case of logistic regression (as we will see later), 
             # we could change it to
             # a sigmoid function to implement a logistic regression classifier.
-            output = self.activation(net_input)
+            output = self.activation(net_input) # ここでは恒等関数を利用しているため、パーセプトロンと同じ
             errors = (y - output)
             self.w_[1:] += self.eta * X.T.dot(errors)
             self.w_[0] += self.eta * errors.sum()
