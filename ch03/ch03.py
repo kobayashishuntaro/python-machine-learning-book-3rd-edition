@@ -616,26 +616,28 @@ plt.show()
 
 
 
-
+# 不純度を示すジニ不純度の関数
 def gini(p):
     return p * (1 - p) + (1 - p) * (1 - (1 - p))
 
-
+# 不純度を示すエントロピーの関数
 def entropy(p):
     return - p * np.log2(p) - (1 - p) * np.log2((1 - p))
 
-
+# 不純度を示す分類誤差の関数
 def error(p):
     return 1 - np.max([p, 1 - p])
 
 x = np.arange(0.0, 1.0, 0.01)
 
+# 不純度の計算
 ent = [entropy(p) if p != 0 else None for p in x]
 sc_ent = [e * 0.5 if e else None for e in ent]
 err = [error(i) for i in x]
 
 fig = plt.figure()
 ax = plt.subplot(111)
+# エントロピー（２種），ジニ不純度，分類誤差のそれぞれをループ処理
 for i, lab, ls, c, in zip([ent, sc_ent, gini(x), err], 
                           ['Entropy', 'Entropy (scaled)', 
                            'Gini impurity', 'Misclassification error'],
@@ -660,10 +662,11 @@ plt.show()
 
 
 
-
+# 不純度の指標にジニ不純度を用いた深さ４の決定木のインスタンス生成
 tree_model = DecisionTreeClassifier(criterion='gini', 
                                     max_depth=4, 
                                     random_state=1)
+# 決定木のモデルを訓練データに適合
 tree_model.fit(X_train, y_train)
 
 X_combined = np.vstack((X_train, X_test))
@@ -741,10 +744,11 @@ plt.show()
 
 
 
-
+# KNNインスタンスを生成
 knn = KNeighborsClassifier(n_neighbors=5, 
                            p=2, 
                            metric='minkowski')
+# 訓練データにKNNモデルを適合
 knn.fit(X_train_std, y_train)
 
 plot_decision_regions(X_combined_std, y_combined, 

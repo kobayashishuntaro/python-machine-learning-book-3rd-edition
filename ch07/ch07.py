@@ -571,10 +571,10 @@ X = df_wine[['Alcohol', 'OD280/OD315 of diluted wines']].values
 le = LabelEncoder()
 y = le.fit_transform(y)
 
-X_train, X_test, y_train, y_test =            train_test_split(X, y, 
-                             test_size=0.2, 
-                             random_state=1,
-                             stratify=y)
+X_train, X_test, y_train, y_test = train_test_split(X, y, 
+                                                    test_size=0.2, 
+                                                    random_state=1,
+                                                    stratify=y)
 
 
 
@@ -584,7 +584,7 @@ tree = DecisionTreeClassifier(criterion='entropy',
                               max_depth=None,
                               random_state=1)
 
-bag = BaggingClassifier(base_estimator=tree,
+bag = BaggingClassifier(estimator=tree,
                         n_estimators=500, 
                         max_samples=1.0, 
                         max_features=1.0, 
